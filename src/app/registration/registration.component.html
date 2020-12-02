@@ -1,0 +1,113 @@
+<div class="main">
+
+    <div class="regform">
+
+
+      <div *ngIf="isRegister" style="text-align: center; padding-top:20px;">
+
+        <i style="font-size: 120px;" class="fa fa-user" aria-hidden="true"></i>
+        <br>
+<p style="font-size: 40px;"> Registered Successfully</p>
+<a href="/home" style="font-size: 20px;">Back to Login &nbsp;<i class="fa fa-sign-in" aria-hidden="true"></i></a>
+      </div>
+
+      <div *ngIf="!isRegister">
+        <div style="text-align: center;">
+            <p class="cen">Student Registration</p>
+        </div>
+
+        <form [formGroup]="ConForm" (ngSubmit)="SubmitReg()">
+            <div class="form-group">
+              <label for="exampleInputEmail1">Full Name</label>
+              <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter full name" name="fullname" formControlName="fullname">
+             </div>
+
+            <div class="form-group">
+                <label for="exampleInputEmail1">Email address</label>
+                <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email" name="email" formControlName="email">
+                </div>
+ 
+              <div class="form-group">
+                <label for="exampleInputEmail1">Phone Number</label>
+                <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter phone number" name="phonenumber" formControlName="phonenumber">
+                </div>
+
+
+                <div class="form-group">
+                    <label for="exampleInputEmail1">College Name</label>
+                    <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter college name" name="college" formControlName="college">
+                    </div>
+    
+
+              <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label for="exampleInputEmail1">Date of Birth</label>
+                  <input id="Full Name" name="Full Name" placeholder="Full Name" class="form-control" type="date" name="dob" formControlName="dob">
+                </div>
+            </div>
+
+
+              <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label for="exampleInputEmail1">City</label>
+                  <input id="Full Name" name="Full Name" placeholder="Eg:- Mumbai" class="form-control" type="text" name="city" formControlName="city">
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="exampleInputEmail1">State</label>
+                  <input type="email" class="form-control" id="inputEmail4" placeholder="Eg:- Delhi" name="state" formControlName="state">
+                </div>
+              </div>
+
+
+
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label for="exampleInputEmail1">Qualification</label>
+                    <select class="form-control" id="exampleFormControlSelect1" name="qualification" formControlName="qualification">
+                        <option>BE</option>
+                        <option selected>B Tech</option>
+                        <option>BSC</option>
+                    </select>
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="exampleInputEmail1">Year of Completion</label>
+                  <select class="form-control" id="exampleFormControlSelect1" name="yoc" formControlName="yoc">
+                    <option selected>2019</option>
+                    <option>2020</option>
+                    <option>2021</option>
+                </select>
+                </div>
+              </div>
+
+
+              
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label for="exampleInputEmail1">Password</label>
+                    <input type="password" class="form-control" id="inputEmail4" placeholder="" name="password1" formControlName="password1">
+                    
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="exampleInputEmail1">Confirm Password</label>
+                  <input type="password" class="form-control" id="inputEmail4" placeholder="" name="password2" formControlName="password2">
+                </div>
+              </div>
+
+              <!-- <div class="form-row">
+                <div class="form-group col-md-6">
+            <div id="capcha_element" class="g-recaptcha" data-callback="getResponceCapcha" [attr.data-sitekey]="siteKeyCaptcha">
+            </div>
+            </div>
+        </div> -->
+              <div style="text-align: center;">
+                <button class="but" type="submit">Register</button>
+                </div>
+        </form>
+
+        <div style="text-align: center;">
+            <a routerLink="../home">Already have an account? Login...</a>
+        </div>
+
+    </div>
+  </div>
+</div>
