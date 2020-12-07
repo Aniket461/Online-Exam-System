@@ -11,11 +11,13 @@
       <div class="modal-body">
 
         <div *ngIf="isPress">
-          <div style="text-align: center;"><p style="font-size: 20px; font-weight: bold;">Sending you an Email...</p></div>
-          <img class="img-responsive" style="margin:0 auto;width: 100px;
+          <div style="text-align: center; height: 110px;"><p style="font-size: 20px; font-weight: bold;">Sending you an Email...</p></div>
+          <img class="img-responsive" style="margin: 0 auto;
+          width: 100px;
           position: static;
           float: right;
-          margin-right: 172px;" src="../../assets/images/loading.gif" alt="">
+          margin-right: 225px;
+          margin-top: -90px;" src="../../assets/images/loading.gif" alt="">
 
         </div>
         <div *ngIf="isSent" style="text-align: center;">
@@ -25,7 +27,7 @@
           <div class="form-group" style="width: 60%;">
             <label for="exampleInputEmail1">Enter your registered Email</label>
             <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="John.doe@gmail.com" name="email" formControlName="email">
-           </div>
+          </div>
 
            <div class="form-group">
             <button type="submit" class="btn btn-primary">Send Email</button>
@@ -47,8 +49,8 @@
             
     <div class="banner">
       <div style="text-align: center;">
-    <p class="b1">Online Exam System</p>
-    <p class="b2">"Some quote on studies or placement"</p>
+    <p class="b1">RANJ-Shaping Futures</p>
+    <p class="b2">"Sincere efforts makes everything easy..."</p>
     </div>
     </div>
             <div class="login">
@@ -58,22 +60,36 @@
     
                 <div class="inform">
     
+                  
+                <div *ngIf="isInvalid" class="" style="color: red; text-align: center;">
+                  <p>Invalid Email and Password Combination</p>
+                  </div>
+
                     <form [formGroup]="ConForm2" (ngSubmit)="SubmitLogin()">
                         <div class="form-group">
                           <label for="exampleInputEmail1">Email address</label>
                           <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email" name="loginemail" formControlName="loginemail">
                           <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+                          <span style="color: red;" class=""  *ngIf="loginemail.errors && loginemail.touched">
+                            <span *ngIf="loginemail.errors.required">Email is Required</span>
+                        </span>
                         </div>
                         <div class="form-group">
                           <label for="exampleInputPassword1">Password</label>
                           <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password" name="loginpass" formControlName="loginpass">
+                          <span style="color: red;" class=""  *ngIf="loginpass.errors && loginpass.touched">
+                            <span *ngIf="loginpass.errors.required">Password is Required</span>
+                        </span>
                         </div>
                         <div class="form-group">
                           <a href="#" data-toggle="modal" data-target="#exampleModal">Forgot Password?</a>
                         </div>
                         <div style="text-align: center;">
-                        <button class="but" type="submit">Login</button>
-                        </div>
+                        <button *ngIf="!isloginButton"  class="but" [disabled] ="ConForm2.invalid" type="submit">Login</button>
+                        <button *ngIf="isloginButton" style="width: 150px;" class="but" [disabled] ="ConForm2.invalid" type="submit">Loging in...</button>
+                        
+                      </div>
+                        
                         <div style="text-align: center; margin-top: 10px;">
                         <a routerLink="../register">Don't have an account? Register Here!!</a>
                         </div>

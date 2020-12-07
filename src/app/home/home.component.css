@@ -25,7 +25,7 @@ img{
 }
 .b1{
     color: white;
-    font-size: 4.5vw;
+    font-size: 4vw;
     font-weight: bold; 
 
 }
@@ -39,7 +39,7 @@ img{
 .login{
     width:30%;
     margin-left: 3%;
-    height: 80%;
+    height: 75%;
     float: left;
 
     margin-top: 5%;
@@ -55,7 +55,7 @@ img{
     font-weight: 500;
 }
 .inform{
-    margin-top: 15%;
+    margin-top: 10%;
     width: 70%;
     margin-left: 15%;
 }
