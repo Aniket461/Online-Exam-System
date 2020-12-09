@@ -22,7 +22,7 @@ export class RegistrationComponent implements OnInit {
 
     this.ConForm = new FormGroup({
       fullname:new FormControl(null,[Validators.required]),
-      email:new FormControl(null,[Validators.required]),
+      email:new FormControl(null,[Validators.required, Validators.pattern('^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$')]),
       phonenumber: new FormControl(null,[Validators.required, Validators.pattern('^([0-9]{10})$')]),
       college: new FormControl(null,[Validators.required]),
       dob: new FormControl("1998-11-11",[Validators.required]),

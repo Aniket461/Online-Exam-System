@@ -1,72 +1,26 @@
-<!--<p>question works!</p>
 
-<button type="button" [class] = "clsname1" (click)='Jump(1)' >1</button>&nbsp;
-<button type="button" [class] = "clsname2" (click)='Jump(2)'>2</button>&nbsp;
-<button type="button" [class] = "clsname3" (click)='Jump(3)'>3</button>&nbsp;
-<button type="button" [class] = "clsname4" (click)='Jump(4)'>4</button>&nbsp;
-<button type="button" [class] = "clsname5" (click)='Jump(5)'>5</button>&nbsp;
-<button type="button" [class] = "clsname6" (click)='Jump(6)'>6</button>&nbsp;
-<button type="button" [class] = "clsname7" (click)='Jump(7)'>7</button>&nbsp;
-<button type="button" [class] = "clsname8" (click)='Jump(8)'>8</button>&nbsp;
-<button type="button" [class] = "clsname9" (click)='Jump(9)'>9</button>&nbsp;
-<button type="button" [class] = "clsname10" (click)='Jump(10)'>10</button>
-<br>
-<h1 id="demo1"></h1>
-<div *ngFor="let s of QuestionDetails">
-    <div *ngIf="s.Que_No == current">
-        <div style='transform: scale(0.65); position: relative; top: -100px;'>
-            <div id='block-5' style='padding: 10px;'>
-                <label for='Quick' style=' padding: 5px; font-size: 2rem;'>
-                  <input type='checkbox' name='option' id='Quick' style='transform: scale(1.6); margin-right: 10px; vertical-align: middle; margin-top: -2px;'
-                  [attr.checked]="rem[current] === true ? 'checked' : null"  (click)='Remember()'/>
-                  Remember Me</label>
-            </div>
-            <hr />
-            <h2 style=' padding: 5px; font-size: 2.5rem;'>{{s.Que_No}}){{s.Question}}</h2> 
-            <hr />
-            <div id='block-1' style='padding: 10px;'>
-                <label for='O1' style=' padding: 5px; font-size: 2rem;'>
-                  <input type='radio' name='option' id='O1' style='transform: scale(1.6); margin-right: 10px; vertical-align: middle; margin-top: -2px;' 
-                  [attr.checked]="AttemptedAnswer[current] === 'O1' ? 'checked' : null" (click)='check("O1")' />
-                  {{s.OP1}}</label>
-                <span id='result-1'></span>
-            </div>
-            <br />
-            <div id='block-2' style='padding: 10px;'>
-                <label for='O2' style=' padding: 5px; font-size: 2rem;'>
-                  <input type='radio' name='option' id='O2' style='transform: scale(1.6); margin-right: 10px; vertical-align: middle; margin-top: -2px;'
-                  [attr.checked]="AttemptedAnswer[current] === 'O2' ? 'checked' : null"  (click)='check("O2")'/>
-                  {{s.OP2}}</label>
-                <span id='result-2'></span>
-            </div>
-            <br />
-            <div id='block-3' style='padding: 10px;'>
-                <label for='O3' style=' padding: 5px; font-size: 2rem;'>
-                  <input type='radio' name='option' id='O3' style='transform: scale(1.6); margin-right: 10px; vertical-align: middle; margin-top: -2px;'
-                  [attr.checked]="AttemptedAnswer[current] === 'O3' ? 'checked' : null"  (click)='check("O3")'/>
-                  {{s.OP3}}</label>
-                <span id='result-3'></span>
-            </div>
-            <br />
-            <div id='block-4' style='padding: 10px;'>
-                <label for='O4' style=' padding: 5px; font-size: 2rem;'>
-                  <input type='radio' name='option' id='O4' style='transform: scale(1.6); margin-right: 10px; vertical-align: middle; margin-top: -2px;'
-                  [attr.checked]="AttemptedAnswer[current] === 'O4' ? 'checked' : null"  (click)='check("O4")'/>
-                  {{s.OP4}}</label>
-                <span id='result-4'></span>
-            </div>
-            <hr />
-            <div style="text-align :center">
-                <button type='button' (click)='displayPrevious()' class="next" [disabled]="current==1"><<  Previous</button>&nbsp;&nbsp;&nbsp;      
-                <button type='button' (click)='displayNext()' class="next" [disabled]="current==10">Next  >></button>
-            </div>
-            <button type="button" (click)='OnSubmit()' class="next">Submit</button>
-            <br>
-        </div>
-    </div>
-</div> -->
 
-<div class="outer">        
+<div class="outer">    
+  
+  <div style="float: left;
+  width: 285px;
+  height: 80px;
+  background-color: white;
+  border-radius: 10px;
+  padding-top: 17px;
+  padding-left: 13px;
+  margin-top: 25px;
+  margin-left: 12px;
+  font-size: 14px;
+  font-weight: 600;
+  
+  box-shadow: 15px 15px rgba(0, 0, 0,0.3);
+
+  ">
+<p>User ID: {{userid}} </p>
+<p>Exam Name: {{examname}}</p> 
+</div>
+  
     <button style="float: right;
     width: 100px;
     font-size: 15px;
@@ -76,7 +30,7 @@
     border: 3px solid black;
     font-weight: bold;margin-top: 30px; border-radius: 10px;" (click)='OnSubmit()' >Submit</button>
     <div>
-        <div style="text-align: center; padding-left: 140px; font-size: 20px; color: white;"><h1>LEVEL : {{levelnumber}}</h1></div>
+        <div style="text-align: center; padding-left: 120px; font-size: 20px; color: white;"><h1 style="margin-right: 290px;">LEVEL : {{levelnumber}}</h1></div>
         <div style="text-align: center;
         width: 40%;
         font-size: 25px;

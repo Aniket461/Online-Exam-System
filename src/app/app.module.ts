@@ -32,6 +32,7 @@ import { StartexamComponent } from './startexam/startexam.component';
 import { AuthGuardQuestion } from './Services/questionguard';
 import { AuthGuardILevel } from './Services/ilevelguard';
 import { AuthGuardReport } from './Services/reportguard';
+import { CanDeactivateGuard } from './Services/candeact';
 
 @NgModule({
   declarations: [
@@ -61,7 +62,7 @@ import { AuthGuardReport } from './Services/reportguard';
     ReactiveFormsModule,
     NgxCaptchaModule
   ],
-  providers: [QuestionService, AuthGuardAdmin,AuthGuardUser, AuthGuardQuestion, AuthGuardStart, AuthGuardILevel, AuthGuardReport],
+  providers: [QuestionService, AuthGuardAdmin,AuthGuardUser, AuthGuardQuestion, AuthGuardStart, AuthGuardILevel, AuthGuardReport, CanDeactivateGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -15,6 +15,7 @@ import { RegistrationComponent } from './registration/registration.component';
 import { ReportComponent } from './report/report.component';
 import { SelectComponent } from './select/select.component';
 import { AuthGuardAdmin } from './Services/adminguard';
+import { CanDeactivateGuard } from './Services/candeact';
 import { AuthGuardILevel } from './Services/ilevelguard';
 import { AuthGuardQuestion } from './Services/questionguard';
 import { AuthGuardReport } from './Services/reportguard';
@@ -28,7 +29,11 @@ const routes: Routes = [
   {path:"home",component:HomeComponent},
   {path:"register",component:RegistrationComponent},
   {path:"forgotpassword", component:ForgotPasswordComponent},
+
+
   {path:"dashboard", component:UserdashboardComponent, canActivate:[AuthGuardUser]},
+
+
   {path:"company",component:SelectComponent,canActivate:[AuthGuardUser]},
   {path:"question", component:QuestionComponent, canActivate:[AuthGuardQuestion]},
   {path:"ilevel", component:LevelScoreComponent, canActivate:[AuthGuardILevel]},

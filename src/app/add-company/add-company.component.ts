@@ -54,4 +54,9 @@ addC(){
   alert("Company Successfully Added")
   this.router.navigateByUrl('/home',{skipLocationChange: true}).then(()=> this.router.navigate(['addcompany']));
 }
+
+
+logout(){
+  sessionStorage.clear();
+}
 }

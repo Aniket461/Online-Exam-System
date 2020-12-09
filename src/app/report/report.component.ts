@@ -45,7 +45,7 @@ export class ReportComponent implements OnInit {
     var data = document.getElementById('contentToConvert');  
     html2canvas(data).then(canvas => {  
       // Few necessary setting options  
-      var imgWidth = 245;
+      var imgWidth = 205;
       var imgHeight = 158;  
       var imgHeight = canvas.height * imgWidth / canvas.width;  
       var heightLeft = imgHeight;  

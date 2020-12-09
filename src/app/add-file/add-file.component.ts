@@ -155,4 +155,9 @@ c2(){
   this.a=false
   console.log("xyz")
   }
+
+  
+logout(){
+  sessionStorage.clear();
+}
 }

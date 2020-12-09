@@ -30,6 +30,7 @@
                 <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email" name="email" formControlName="email">
                 <span style="color: red;" class=""  *ngIf="email.errors && email.touched">
                   <span *ngIf="email.errors.required">Email address is Required</span>
+                  <span *ngIf="email.errors.pattern">incorrect format</span>
               </span> 
               </div>
  
@@ -152,9 +153,8 @@
             <div class="form-row">
                 <div class="form-group col-md-6">
                     <label for="exampleInputEmail1">Password</label>
-                    <input type="password" class="form-control" id="inputEmail4" placeholder="" name="password1" formControlName="password1">
-                    <span style="color: red;" class=""  *ngIf="password1.errors && password1.touched">
-                      
+                    <input type="password" class="form-control" id="inputEmail4" title="Must contain at least 8 characters&#10;Must contain at least one uppercase letter&#10;Must contain at least one lowercase letter&#10;Must contain at least one number&#10;Must contain at least one special characters(!”#$%&'()*+,-./:;<=>?@[\]^_`{|}~ )" placeholder="" name="password1" formControlName="password1">
+                                        <span style="color: red;" class=""  *ngIf="password1.errors && password1.touched">   
                   <span *ngIf="password1.errors.required">Password is Required</span>
                     <span *ngIf="password1.errors.pattern">incorrect format</span>
                   </span>

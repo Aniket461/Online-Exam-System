@@ -40,4 +40,10 @@ logout(){
   sessionStorage.clear();
 }
 
+
+canDeactivate() {
+  
+  return confirm('Are you sure you want to leave the Exam?');
+}
+
 }

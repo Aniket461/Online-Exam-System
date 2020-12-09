@@ -16,6 +16,8 @@ export class QuestionComponent implements OnInit {
   levelnumber:number = 0;
   rem : boolean[] = Array(11)
   RememberMe : boolean
+  userid:string;
+  examname:string;
   Score : number = 0;
   current : number = 1;
   interval;
@@ -33,6 +35,8 @@ export class QuestionComponent implements OnInit {
 
   ngOnInit(): void {
        
+        this.userid = sessionStorage.getItem("email");
+        this.examname = sessionStorage.getItem("examname");
     this.callQuestions();
     console.log(this.current)
   }
@@ -227,7 +231,7 @@ export class QuestionComponent implements OnInit {
 
     sessionStorage.setItem("l1app","true");
     console.log("Your level1 Score is : " + this.Score);
-    if(this.Score >6){
+    if(this.Score >5){
             this.QuestionService.islevel1cleared = true;
             sessionStorage.setItem("Level1Score", this.Score.toString());
             
@@ -289,7 +293,7 @@ else if(sessionStorage.getItem("l2app") == "false" && sessionStorage.getItem("l1
     this.CorrectAnswer = [];
 
     console.log("Your level2 Score is : " + this.Score);
-    if(this.Score >6){
+    if(this.Score >5){
         this.QuestionService.islevel2cleared = true;
         this.QuestionService.islevel2app = true;
         
@@ -344,7 +348,7 @@ else if(sessionStorage.getItem("l3app") == "false" && sessionStorage.getItem("l2
     this.CorrectAnswer = [];
 
     console.log("Your level2 Score is : " + this.Score);
-    if(this.Score >6){
+    if(this.Score >5){
         this.QuestionService.islevel3cleared = true;
         this.QuestionService.islevel3app = true;
         this.pauseTimer(); 
@@ -409,4 +413,12 @@ else{
   pauseTimer() {
     clearInterval(this.interval);
   }
+
+
+  canDeactivate() {
+        return confirm('Are you sure you want to leave the Exam?');
+    }
+
 }
+
+

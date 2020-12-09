@@ -53,6 +53,7 @@ export class SelectComponent implements OnInit {
        if(this.subjectdetails[a].ExamName==this.subject)
        {
          this.eid=String(this.subjectdetails[a].ExamID);
+         sessionStorage.setItem("examname",this.subject);
          sessionStorage.setItem("ExamID",this.eid);
         
        }

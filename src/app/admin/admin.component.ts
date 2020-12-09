@@ -150,4 +150,8 @@ c3(){
   this.a=false;
 }
 
+
+logout(){
+  sessionStorage.clear();
+}
 }

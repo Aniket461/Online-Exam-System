@@ -33,4 +33,9 @@ deleteFile(){
   alert("File successfully deleted!")
   this.router.navigateByUrl('/home',{skipLocationChange:true}).then(()=>{this.router.navigate(['delfile'])})
 }
+
+logout(){
+  sessionStorage.clear();
+}
+
 }
