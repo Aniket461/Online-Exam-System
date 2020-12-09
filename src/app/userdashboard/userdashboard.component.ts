@@ -10,6 +10,7 @@ import { Router } from '@angular/router';
 export class UserdashboardComponent implements OnInit {
 
   report:any=[];
+  reportlist:any
   sid:number;
   selectedValue:any=null;
   name:string = sessionStorage.getItem("email");
@@ -25,6 +26,7 @@ export class UserdashboardComponent implements OnInit {
     //alert(sessionStorage.getItem("examstarted"));
     this.report = this.http.get("https://localhost:44399/dashboard?sid="+this.sid).subscribe((data)=> //sid comes from local storage
     {this.report=data; console.log(data);
+      this.reportlist = [...new Set(this.report.map(item => item.ExamName))];
      
     console.log(
       
@@ -42,6 +44,7 @@ logout(){
 
   sessionStorage.clear();
 }
+
 
 
 canDeactivate() {

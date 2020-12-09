@@ -17,6 +17,7 @@ export class ReportComponent implements OnInit {
   examdetails:any;
   eid=sessionStorage.getItem("ExamID");
   sid=sessionStorage.getItem("currentUser");
+  name:string = sessionStorage.getItem("email");
   constructor(private http:HttpClient, private router: Router) { }
 
   ngOnInit(): void {

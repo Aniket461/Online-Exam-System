@@ -1,6 +1,8 @@
+import { PlatformLocation } from '@angular/common';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
-import { Component,ViewChild, ElementRef , OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Component,ViewChild, ElementRef , OnInit, HostListener } from '@angular/core';
+import { NavigationStart, Router } from '@angular/router';
+import { SubscriptionLike } from 'rxjs';
 import { QuestionService} from '../Services/QuestionService';
 
 
@@ -31,16 +33,25 @@ export class QuestionComponent implements OnInit {
   clsname8 = "clsname btn btn-default"
   clsname9 = "clsname btn btn-default"
   clsname10 = "clsname btn btn-default"
-  constructor(private QuestionService : QuestionService, private router: Router, private http: HttpClient) { }
+  constructor(private QuestionService : QuestionService, private router: Router, private http: HttpClient) {
+
+
+   }
 
   ngOnInit(): void {
-       
+
+
+//         @HostListener('window:popstate')
+//   onpopstate() {
+//     this.router.navigate(['stoebern']);
+//     this.modalService.dismissAll();
+//   }
+
         this.userid = sessionStorage.getItem("email");
         this.examname = sessionStorage.getItem("examname");
     this.callQuestions();
     console.log(this.current)
   }
-
 
   callQuestions(){
 
@@ -232,6 +243,7 @@ export class QuestionComponent implements OnInit {
     sessionStorage.setItem("l1app","true");
     console.log("Your level1 Score is : " + this.Score);
     if(this.Score >5){
+        alert("inside if"+this.Score);
             this.QuestionService.islevel1cleared = true;
             sessionStorage.setItem("Level1Score", this.Score.toString());
             
@@ -242,7 +254,7 @@ export class QuestionComponent implements OnInit {
    sessionStorage.setItem("level_no","1");
    sessionStorage.setItem("level_score",sessionStorage.getItem("Level1Score"));
    this.Score = 0;
-            this.router.navigate(['ilevel']);
+            this.router.navigate(['ilevel'], {replaceUrl:true})
             //this.router.navigateByUrl('/home', {skipLocationChange: true}).then(()=>{ this.router.navigate(['question'])});  
             
     }
@@ -270,7 +282,7 @@ export class QuestionComponent implements OnInit {
     
     console.log(res);
     
-    this.router.navigate(['report']);
+    this.router.navigate(['report'],{replaceUrl:true});
   })
     .catch(err=> alert(err));
     }
@@ -306,7 +318,7 @@ else if(sessionStorage.getItem("l2app") == "false" && sessionStorage.getItem("l1
    sessionStorage.setItem("level_no","2");
    sessionStorage.setItem("level_score",sessionStorage.getItem("Level2Score"));
    this.Score = 0;
-            this.router.navigate(['ilevel']);
+            this.router.navigate(['ilevel'],{replaceUrl:true});
         //this.router.navigate(['question']);
 }
 else{
@@ -325,7 +337,7 @@ else{
             
             
     var res = this.http.post("https://localhost:44399/postreport",JSON.stringify(this.report), {headers:{'Content-Type': 'application/json'}}).toPromise().then(res => {
-        this.router.navigate(['report']);
+        this.router.navigate(['report'],{replaceUrl:true});
   })
     .catch(err=> alert(err));
 }
@@ -366,7 +378,7 @@ else if(sessionStorage.getItem("l3app") == "false" && sessionStorage.getItem("l2
             
             
     var res = this.http.post("https://localhost:44399/postreport",JSON.stringify(this.report), {headers:{'Content-Type': 'application/json'}}).toPromise().then(res => {
-        this.router.navigate(['report']);
+        this.router.navigate(['report'], {replaceUrl:true});
   })
     .catch(err=> alert(err));
 
@@ -386,7 +398,7 @@ else{
             
             
     var res = this.http.post("https://localhost:44399/postreport",JSON.stringify(this.report), {headers:{'Content-Type': 'application/json'}}).toPromise().then(res => {
-        this.router.navigate(['report']);
+        this.router.navigate(['report'], {replaceUrl:true});
   })
     .catch(err=> alert(err));
 }
@@ -413,12 +425,6 @@ else{
   pauseTimer() {
     clearInterval(this.interval);
   }
-
-
-  canDeactivate() {
-        return confirm('Are you sure you want to leave the Exam?');
-    }
-
 }
 
 

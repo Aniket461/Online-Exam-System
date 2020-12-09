@@ -12,6 +12,7 @@ export class AboutusComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  
   Exit(){
     sessionStorage.clear();
     alert("Logged Out!")

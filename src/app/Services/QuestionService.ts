@@ -1,5 +1,7 @@
 import {HttpClient} from '@angular/common/http';
 import {Injectable} from '@angular/core';
+import { Router } from '@angular/router';
+import { QuestionComponent } from '../question/question.component';
 
 @Injectable()
 export class QuestionService //This is the one who talks between server (Web API) and client using HttpClient
@@ -17,7 +19,7 @@ export class QuestionService //This is the one who talks between server (Web API
 
 
     url : string = "https://localhost:44399/Read/";
-    constructor(private http : HttpClient){
+    constructor(private http : HttpClient, private router: Router){
 
     }
 
@@ -25,5 +27,8 @@ export class QuestionService //This is the one who talks between server (Web API
         //debugger;
         return this.http.get(this.url + QueID);
     }
+
+
+
 
 }

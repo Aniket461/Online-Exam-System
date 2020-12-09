@@ -2,6 +2,8 @@ import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { QuestionComponent } from '../question/question.component';
+import {QuestionService} from '../Services/QuestionService';
 
 @Component({
   selector: 'app-home',
@@ -22,7 +24,7 @@ isInvalid:boolean=false;
 isloginButton:boolean=false;
 
 
-constructor(private http:HttpClient, private router: Router) { 
+constructor(private http:HttpClient, private router: Router, private QuestionService : QuestionService) { 
 
     this.ConForm = new FormGroup({
       email:new FormControl(null,[Validators.required]),
@@ -33,7 +35,33 @@ constructor(private http:HttpClient, private router: Router) {
     });
   }
 
+  report: any={};
   ngOnInit(): void {
+ 
+    if(sessionStorage.getItem("examstarted") == "true"){
+      
+      
+    var sid=sessionStorage.getItem("currentUser");;
+    var eid=sessionStorage.getItem("ExamID");
+            this.report.StudentID = sid;
+            this.report.ExamID = eid;
+            this.report.Level1_Score = sessionStorage.getItem("Level1Score");
+            this.report.Level2_Score = sessionStorage.getItem("Level2Score");
+            this.report.Level3_Score = sessionStorage.getItem("Level3Score");
+            this.report.Date = new Date();
+
+            console.log("report here "+this.report);
+            
+            
+    var res = this.http.post("https://localhost:44399/postreport",JSON.stringify(this.report), {headers:{'Content-Type': 'application/json'}}).toPromise().then(res =>{
+
+    console.log("posted");
+
+    });
+    
+      sessionStorage.clear();
+    }
+
   }
 
   get loginemail(){
@@ -56,7 +84,7 @@ constructor(private http:HttpClient, private router: Router) {
     console.log(this.login);
     //post route for login check here
     
-    if(logemail == "admin@gmail.com" && logpass == "admin"){    
+    if(logemail == "admin@gmail.com" && logpass == "admin@12345"){    
     sessionStorage.setItem("email","admin@gmail.com");
     sessionStorage.setItem("Id","a1");
     
