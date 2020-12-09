@@ -47,7 +47,13 @@
                   <div class="col-12 col-xl-8 mb-4 mb-lg-0">
                       <div class="card">
                           <div class="card-body">
-                              <div class="table-responsive">
+
+                            <div *ngIf="report.length == 0" style="text-align: center;">
+
+                              <h3>You have not given any tests yet...</h3>
+                            </div>
+
+                              <div *ngIf="report.length != 0" class="table-responsive">
                                   <table class="table" style="color: black;" *ngIf="selectedValue==null || selectedValue=='All'">
                                       <thead>
                                         <tr>

@@ -11,6 +11,7 @@ export class UserdashboardComponent implements OnInit {
 
   report:any=[];
   sid:number;
+  selectedValue:any=null;
   name:string = sessionStorage.getItem("email");
   constructor(private http:HttpClient, private router: Router) { }
 
@@ -24,14 +25,16 @@ export class UserdashboardComponent implements OnInit {
     //alert(sessionStorage.getItem("examstarted"));
     this.report = this.http.get("https://localhost:44399/dashboard?sid="+this.sid).subscribe((data)=> //sid comes from local storage
     {this.report=data; console.log(data);
+     
     console.log(
       
-      (this.report[0].Date)
+      
+      (this.report.length)
     
     )
     
     })
-    console.log(this.report);
+    console.log( this.report.length);
   }
 
 logout(){
